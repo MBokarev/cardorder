@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,6 +24,10 @@ public class DebitCardTest {
 
     @BeforeEach
     void setUp() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
         driver = new ChromeDriver();
     }
 
