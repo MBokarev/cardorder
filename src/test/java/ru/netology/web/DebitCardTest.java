@@ -1,7 +1,6 @@
 package ru.netology.web;
 
 import com.codeborne.selenide.SelenideElement;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,12 +13,14 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class DebitCardTest {
 
-    WebDriver driver;
+    private WebDriver driver;
 
     @BeforeAll
-    static void setUpClass() {
+    static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
