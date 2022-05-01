@@ -12,33 +12,26 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeOptions;
-
 public class DebitCardTest {
 
     private WebDriver driver;
 
     @BeforeAll
-    static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+    static void setUp1() {
+        System.setProperty("webdriver.chrome.driver", "driver/win/chromedriver.exe");
     }
 
     @BeforeEach
     void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
         driver = new ChromeDriver();
     }
 
     @AfterEach
     public void close() {
-        if (driver != null) {
             driver.quit();
+            driver = null;
         }
-    }
+
 
     @Test
     public void test() {
