@@ -35,8 +35,9 @@ public class DebitCardTest {
 
     @AfterEach
     public void close() {
-        driver.quit();
-        driver = null;
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test
