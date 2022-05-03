@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
@@ -17,13 +18,17 @@ public class DebitCardTest {
     private WebDriver driver;
 
     @BeforeAll
-    static void setUp1() {
-        System.setProperty("webdriver.chrome.driver", "driver/win/chromedriver.exe");
+    static void setUp() {
+        System.setProperty("webdriver.chrome.driver", "/driver/win/chromedriver.exe");
     }
 
     @BeforeEach
-    void setUp() {
-        driver = new ChromeDriver();
+    void setUp2() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
     }
 
     @AfterEach
@@ -31,7 +36,6 @@ public class DebitCardTest {
             driver.quit();
             driver = null;
         }
-
 
     @Test
     public void test() {
